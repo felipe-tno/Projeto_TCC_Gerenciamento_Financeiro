@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MoneyMate Web Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="chat-container">
+    <div id="chat" class="chat-box"></div>
+    <div class="input-area">
+        <input type="text" id="mensagem" placeholder="Digite seu ID ou gasto..." autocomplete="off">
+        <button id="enviar">Enviar</button>
+        <button id="definirOrcamento">💰 Definir Orçamento</button>
+    </div>
+</div>
+
+<!-- Modal do orçamento -->
+<div id="orcamentoModal" class="modal">
+    <div class="modal-content">
+        <h3>Definir Orçamento</h3>
+        <label>Categoria:</label>
+        <select id="categoriaOrcamento">
+            <option value="alimentacao">Alimentação</option>
+            <option value="transporte">Transporte</option>
+            <option value="saude">Saúde</option>
+            <option value="lazer">Lazer</option>
+            <option value="entretenimento">Entretenimento</option>
+            <option value="outros">Outros</option>
+        </select>
+        <label>Valor limite (R$):</label>
+        <input type="number" id="valorOrcamento" min="1" placeholder="Ex: 500">
+        <div class="modal-buttons">
+            <button id="salvarOrcamento">Salvar</button>
+            <button id="cancelarOrcamento">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Gráfico -->
+<div class="grafico-container">
+    <canvas id="grafico" width="350" height="150"></canvas>
+    <p id="totalGastos"></p>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
